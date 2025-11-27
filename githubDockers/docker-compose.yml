@@ -21,8 +21,9 @@ services:
 
   backend:
     build:
-      context: .
-      dockerfile: Dockerfile.backend
+      # Set build context to repository root so Docker can COPY the `backend/` folder
+      context: ..
+      dockerfile: githubDockers/Dockerfile.backend
     container_name: beatflow-backend
     restart: always
     environment:
@@ -41,8 +42,9 @@ services:
 
   frontend:
     build:
-      context: .
-      dockerfile: Dockerfile.frontend
+      # Set build context to repository root so Docker can COPY the `frontend/` folder
+      context: ..
+      dockerfile: githubDockers/Dockerfile.frontend
     container_name: beatflow-frontend
     restart: always
     ports:
